@@ -1,0 +1,122 @@
+{
+  "feature_names": [
+    "AF3",
+    "AF4",
+    "F3",
+    "F4",
+    "F7",
+    "F8",
+    "FC5",
+    "FC6",
+    "T7",
+    "T8",
+    "P7",
+    "P8",
+    "O1",
+    "O2"
+  ],
+  "best_model": "Random Forest",
+  "best_accuracy": 93.22,
+  "results": {
+    "Logistic Regression": {
+      "accuracy": 58.51,
+      "precision": 57.91,
+      "recall": 58.51,
+      "f1_score": 56.76,
+      "confusion_matrix": [
+        [
+          1260,
+          391
+        ],
+        [
+          852,
+          493
+        ]
+      ]
+    },
+    "Decision Tree": {
+      "accuracy": 82.24,
+      "precision": 82.27,
+      "recall": 82.24,
+      "f1_score": 82.25,
+      "confusion_matrix": [
+        [
+          1377,
+          274
+        ],
+        [
+          258,
+          1087
+        ]
+      ]
+    },
+    "Random Forest": {
+      "accuracy": 93.22,
+      "precision": 93.25,
+      "recall": 93.22,
+      "f1_score": 93.21,
+      "confusion_matrix": [
+        [
+          1576,
+          75
+        ],
+        [
+          128,
+          1217
+        ]
+      ]
+    },
+    "SVM": {
+      "accuracy": 69.39,
+      "precision": 73.44,
+      "recall": 69.39,
+      "f1_score": 66.71,
+      "confusion_matrix": [
+        [
+          1541,
+          110
+        ],
+        [
+          807,
+          538
+        ]
+      ]
+    },
+    "KNN": {
+      "accuracy": 91.02,
+      "precision": 91.03,
+      "recall": 91.02,
+      "f1_score": 91.0,
+      "confusion_matrix": [
+        [
+          1540,
+          111
+        ],
+        [
+          158,
+          1187
+        ]
+      ]
+    },
+    "Naive Bayes": {
+      "accuracy": 45.59,
+      "precision": 53.0,
+      "recall": 45.59,
+      "f1_score": 31.72,
+      "confusion_matrix": [
+        [
+          66,
+          1585
+        ],
+        [
+          45,
+          1300
+        ]
+      ]
+    }
+  },
+  "class_labels": {
+    "0": "Eyes Closed",
+    "1": "Eyes Open"
+  }
+}

@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card p-4">
+            <h3 class="text-center mb-2">🧠 EEG Eye State Detection</h3>
+            <p class="text-center text-muted mb-4">Enter the 14 EEG channel values to predict eye state</p>
+
+            {% if error %}
+            <div class="alert alert-danger">{{ error }}</div>
+            {% endif %}
+
+            <form method="POST">
+                {% csrf_token %}
+                <div class="row">
+                    {% for feature in features %}
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label fw-bold">{{ feature }}</label>
+                        <input type="number" step="0.01" name="{{ feature }}" class="form-control"
+                            placeholder="Enter {{ feature }} value" required>
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="text-center mt-3">
+                    <button type="submit" class="btn btn-primary px-5 py-2 fs-5">
+                        🔍 Predict Eye State
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-10">
+
+        <!-- Best Model Result -->
+        <div class="card p-4 mb-4 text-center">
+            <h3 class="mb-3">🎯 Prediction Results</h3>
+            {% for r in results %}
+            {% if r.is_best %}
+            <h4 class="text-muted">Best Model: <strong>{{ r.model }}</strong></h4>
+            <div class="display-4 fw-bold mt-3
+                        {% if r.prediction == 'Eyes Open' %}text-success
+                        {% else %}text-danger{% endif %}">
+                {% if r.prediction == 'Eyes Open' %}
+                👁️ Eyes Open
+                {% else %}
+                😌 Eyes Closed
+                {% endif %}
+            </div>
+            <p class="text-muted mt-2">Accuracy: {{ r.accuracy }}%</p>
+            {% endif %}
+            {% endfor %}
+        </div>
+
+        <!-- All Models Comparison -->
+        <div class="card p-4 mb-4">
+            <h5 class="mb-3">📊 All Models Comparison</h5>
+            <table class="table table-bordered table-hover text-center">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Model</th>
+                        <th>Prediction</th>
+                        <th>Accuracy</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for r in results %}
+                    <tr {% if r.is_best %}class="table-success" {% endif %}>
+                        <td>{{ r.model }}</td>
+                        <td>{{ r.prediction }}</td>
+                        <td>{{ r.accuracy }}%</td>
+                        <td>
+                            {% if r.is_best %}
+                            <span class="badge bg-success">⭐ Best</span>
+                            {% else %}
+                            <span class="badge bg-secondary">Normal</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Input Values -->
+        <div class="card p-4 mb-4">
+            <h5 class="mb-3">📋 Input EEG Values</h5>
+            <div class="row">
+                {% for key, value in input_data.items %}
+                <div class="col-md-3 mb-2">
+                    <span class="badge bg-primary w-100 p-2">
+                        {{ key }}: {{ value }}
+                    </span>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="text-center">
+            <a href="{% url 'predict' %}" class="btn btn-primary px-5">
+                🔄 Predict Again
+            </a>
+        </div>
+
+    </div>
+</div>
+{% endblock %}
